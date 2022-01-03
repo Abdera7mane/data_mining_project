@@ -2,6 +2,4 @@
 .idea
 datasets/
 out/
-data_mining_project.iml
 *.iml
-src/app/functions/test_func.java
