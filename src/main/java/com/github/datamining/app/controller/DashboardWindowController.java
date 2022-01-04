@@ -1,11 +1,10 @@
-package app.controller;
+package com.github.datamining.app.controller;
 
-import app.Tendances_centrales;
-import app.Tendances_dispersion;
-import app.Utilities;
+import com.github.datamining.app.Tendances_centrales;
+import com.github.datamining.app.Tendances_dispersion;
+import com.github.datamining.app.utitlies.CommonUtilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import app.functions.MainFct;
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +21,8 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
+
+import static com.github.datamining.app.utitlies.ViewUtilities.*;
 
 public class DashboardWindowController {
 
@@ -84,30 +85,30 @@ public class DashboardWindowController {
                 int iarg1;
                 int iarg2;
 
-                System.out.println(MainFct.filePath);
-                ArrayList<Double[]> data= MainFct.readFile(MainFct.filePath);
+                System.out.println(filePath);
+                ArrayList<Double[]> data= readFile(filePath);
 
                 if (!arg1.equals("null") && !arg2.equals("null")){
 
                         iarg1= Integer.parseInt(arg1)-1 ;
                         iarg2 = Integer.parseInt(arg2)-1 ;
 
-                        JPanel scatterplot = MainFct.scatterDiagram(data, iarg1, iarg2);
+                        JPanel scatterplot = scatterDiagram(data, iarg1, iarg2);
                         swingNodeScatterPot.setContent(scatterplot);
                         chart_scatterPlot.getChildren().add(swingNodeScatterPot);
 
 
-                        JPanel boxplot = MainFct.boxplotFct(data, iarg1);
+                        JPanel boxplot = boxplotFct(data, iarg1);
                         swingNodeBoxPot.setContent(boxplot);
                         chart_boxPlot.getChildren().add(swingNodeBoxPot);
 
 
-                        JPanel qqplot  = MainFct.qqplotFct(data, iarg1, iarg2);
+                        JPanel qqplot  = qqplotFct(data, iarg1, iarg2);
                         swingNodeQQPlot.setContent(qqplot);
                         chart_qPlot.getChildren().add(swingNodeQQPlot);
 
 
-                        JPanel histogram = MainFct.histogramFct(data, iarg1);
+                        JPanel histogram = histogramFct(data, iarg1);
                         swingNodeHistogram.setContent(histogram);
                         /// check this one
                         chart_otherGraph2.getChildren().add(swingNodeHistogram);
@@ -120,11 +121,11 @@ public class DashboardWindowController {
                 else if(!arg1.equals("null")){
                         iarg1 = Integer.parseInt(arg1)-1 ;
 
-                        JPanel boxplot = MainFct.boxplotFct(data, iarg1);
+                        JPanel boxplot = boxplotFct(data, iarg1);
                         swingNodeBoxPot.setContent(boxplot);
                         chart_boxPlot.getChildren().add(swingNodeBoxPot);
 
-                        JPanel histogram = MainFct.histogramFct(data, iarg1);
+                        JPanel histogram = histogramFct(data, iarg1);
                         swingNodeHistogram.setContent(histogram);
                         chart_otherGraph2.getChildren().add(swingNodeHistogram);
 
@@ -139,7 +140,7 @@ public class DashboardWindowController {
         }
 
         public void set_tables(ArrayList<Double[]> data){
-                Utilities utilities= new Utilities();
+                CommonUtilities utilities= new CommonUtilities();
                 String[] table_centrale= utilities.return_centrale(data,combo_firstCol.getSelectionModel().getSelectedIndex());
                 ObservableList<Tendances_centrales> tendance= FXCollections.observableArrayList(
                         new Tendances_centrales(table_centrale[0],table_centrale[1],table_centrale[2],
@@ -176,7 +177,7 @@ public class DashboardWindowController {
         private void setCorrelationData(ArrayList<Double[]> data){
                 int column1 = Integer.parseInt(this.combo_firstCol.getValue());
                 int column2 = Integer.parseInt(this.combo_secondCol.getValue());
-                double corrCoef = MainFct.correlationCoef(data, column1, column2);
+                double corrCoef = correlationCoef(data, column1, column2);
                 this.correlationCoefField.setText(String.format("%.2f", corrCoef));
 
                 if (Math.abs(corrCoef) <= 0.2){
@@ -195,7 +196,7 @@ public class DashboardWindowController {
 
         @FXML
         void switchToHomeWin(ActionEvent event) throws Exception{
-                Utilities u = new Utilities();
+                CommonUtilities u = new CommonUtilities();
                 u.switchWindow(event, "/resources/views/MainWindow.fxml", root, stage, scene);
         }
 

@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<SplitPane dividerPositions="0.055441478439425054" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="579.0" prefWidth="1012.0" style="-fx-background-color: #FFFFFC;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MainWindowController">
+<SplitPane dividerPositions="0.055441478439425054" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="579.0" prefWidth="1012.0" style="-fx-background-color: #FFFFFC;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.datamining.app.controller.MainWindowController">
   <items>
     <AnchorPane>
          <children>

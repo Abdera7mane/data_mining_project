@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="328.0" style="-fx-border-color: #F0AD4E; -fx-border-radius: 5px; -fx-border-width: 2px;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.MainWindowController">
+<AnchorPane prefHeight="400.0" prefWidth="328.0" style="-fx-border-color: #F0AD4E; -fx-border-radius: 5px; -fx-border-width: 2px;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.datamining.app.controller.MainWindowController">
    <children>
       <Text fill="#f0ad4e" layoutX="80.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add/Edit Instance">
          <font>

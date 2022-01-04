@@ -1,6 +1,6 @@
-package app.functions;
+package com.github.datamining.app.utitlies;
 
-import app.controller.MainWindowController;
+import com.github.datamining.app.controller.MainWindowController;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -10,7 +10,7 @@ import org.jfree.chart.renderer.xy.XYBoxAndWhiskerRenderer;
 import org.jfree.data.statistics.*;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-import smile.plot.swing.PlotCanvas;
+import smile.plot.swing.Plot;
 import smile.plot.swing.QQPlot;
 
 import javax.swing.*;
@@ -187,10 +187,10 @@ public class ViewUtilities {
             att2[i] = (dataset.get(i)[y]);
         }
 
-        PlotCanvas canvas = QQPlot.plot(att1, att2);
+        Plot canvas = QQPlot.of(att1, att2);
         JPanel pan = new JPanel(new BorderLayout());
-        pan.setPreferredSize(new Dimension(461, 186));
-        pan.add(canvas, BorderLayout.CENTER);
+        //pan.setPreferredSize(new Dimension(461, 186));
+        //pan.add(canvas, BorderLayout.CENTER);
 
         return pan;
     }
@@ -926,8 +926,8 @@ public class ViewUtilities {
 
 
     public static void main(String[] args) throws Exception {
-        ArrayList<Double[]> data = app.functions.ViewUtilities.readFile("datasets/seeds_dataset.txt");
-        data = app.functions.ViewUtilities.minMaxNormalization(data);
+        ArrayList<Double[]> data = readFile("datasets/seeds_dataset.txt");
+        data = minMaxNormalization(data);
         System.out.println(data.size());
         System.out.println(data.get(data.size()-1)[0]);
                 /*  Test discretisationEqual

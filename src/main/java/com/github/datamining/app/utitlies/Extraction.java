@@ -1,6 +1,9 @@
-package app.functions;
+package com.github.datamining.app.utitlies;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
+
+import static com.github.datamining.app.utitlies.ViewUtilities.*;
 
 public class Extraction {
     int minconf;
@@ -69,7 +72,7 @@ public class Extraction {
     public ArrayList<ArrayList<String>> preprocessData(ArrayList<Double[]> data){
         ArrayList<ArrayList<String>> descritized_data = new ArrayList<ArrayList<String>>();
         for (int i = 0; i < 7; i++) {
-            descritized_data.add(MainFct.discretisationEqual(this.getColumn(data, i), 4, i+1));
+            descritized_data.add(discretisationEqual(this.getColumn(data, i), 4, i+1));
         }
         return descritized_data;
     }
@@ -117,11 +120,11 @@ public class Extraction {
 
 
     public static void main(String[] args) throws Exception{
-        ArrayList<Double[]> data= MainFct.readFile("datasets/seeds.txt");
+        ArrayList<Double[]> data= readFile("datasets/seeds.txt");
         Apriori apriori = new Apriori(data, 25);
         ArrayList<String[]> items = apriori.calculateFrequentItems();
 
-        app.functions.Extraction ex_instance= new app.functions.Extraction(data,90,items);
+        Extraction ex_instance= new Extraction(data,90,items);
         System.out.println(ex_instance.rule_extraction());
     }
 }

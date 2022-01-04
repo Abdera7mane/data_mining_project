@@ -1,4 +1,4 @@
-package app;
+package com.github.datamining.app;
 
 public class Field {
         public int id;

@@ -1,9 +1,8 @@
-package app.functions;
+package com.github.datamining.app.utitlies;
 
-import scala.Int;
-
-import java.lang.reflect.Array;
 import java.util.*;
+
+import static com.github.datamining.app.utitlies.ViewUtilities.*;
 
 public class Eclat {
     //TODO: try to print the actual list in every step of the process.
@@ -24,7 +23,7 @@ public class Eclat {
          */
         ArrayList<ArrayList<String>> descritized_data = new ArrayList<ArrayList<String>>();
         for (int i = 0; i < 7; i++) {
-            descritized_data.add(MainFct.discretisationEqual(this.getColumn(data, i), 4, i+1));
+            descritized_data.add(discretisationEqual(this.getColumn(data, i), 4, i+1));
         }
         return descritized_data;
     }

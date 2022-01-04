@@ -1,4 +1,4 @@
-package app;
+package com.github.datamining.app;
 
 public class Instance {
         public int id;

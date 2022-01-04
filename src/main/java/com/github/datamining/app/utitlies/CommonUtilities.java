@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static com.github.datamining.app.utitlies.ViewUtilities.*;
+
 /*
     this class is aimed to contain useful methods that we will need
     in the gui.
@@ -36,28 +38,28 @@ public class CommonUtilities {
         });
     }
 
-    public String[] return_centrale(ArrayList<Double[]> data, int column){
+    public static String[] return_centrale(ArrayList<Double[]> data, int column){
         String[] centrale= new String[5];
-        centrale[0]=String.format("%.2f", app.functions.ViewUtilities.getMoy(data,column)).replace(",", ".") ;
-        centrale[1]=String.format("%.2f", app.functions.ViewUtilities.moyenneTranquee(data,column)).replace(",", ".");
-        centrale[2]= app.functions.ViewUtilities.modeFct(data,column).toString();
-        centrale[3]=String.format("%.2f", app.functions.ViewUtilities.getMediane(data,column)).replace(",", ".");
+        centrale[0]=String.format("%.2f", getMoy(data,column)).replace(",", ".") ;
+        centrale[1]=String.format("%.2f", moyenneTranquee(data,column)).replace(",", ".");
+        centrale[2]= modeFct(data,column).toString();
+        centrale[3]=String.format("%.2f", getMediane(data,column)).replace(",", ".");
         //TODO; try to fix the .2f error
-        centrale[4]=String.valueOf(app.functions.ViewUtilities.milieuEtendu(data,column));
+        centrale[4]=String.valueOf(milieuEtendu(data,column));
 
         return centrale;
     }
 
-    public String[] return_dispersion(ArrayList<Double[]> data, int column){
+    public static String[] return_dispersion(ArrayList<Double[]> data, int column){
         String[] dispersion= new String[8];
-        dispersion[0]=String.format("%.2f", app.functions.ViewUtilities.quartiles(data,1,column)).replace(",", ".") ;
-        dispersion[1]=String.format("%.2f", app.functions.ViewUtilities.quartiles(data,2,column)).replace(",", ".") ;
-        dispersion[2]=String.format("%.2f", app.functions.ViewUtilities.quartiles(data,3,column)).replace(",", ".") ;
-        dispersion[3]=String.format("%.2f", app.functions.ViewUtilities.ecartType(data,column)).replace(",", ".");
-        dispersion[4]=String.format("%.2f", app.functions.ViewUtilities.ecartInterquartile(data,column)).replace(",", ".");
-        dispersion[5]=String.format("%.2f", app.functions.ViewUtilities.etendu(data,column)).replace(",", ".");
-        dispersion[6]=String.format("%.2f", app.functions.ViewUtilities.variance(data,column)).replace(",", ".");
-        dispersion[7]= app.functions.ViewUtilities.outliers(data,column).toString();
+        dispersion[0]=String.format("%.2f", quartiles(data,1,column)).replace(",", ".") ;
+        dispersion[1]=String.format("%.2f", quartiles(data,2,column)).replace(",", ".") ;
+        dispersion[2]=String.format("%.2f", quartiles(data,3,column)).replace(",", ".") ;
+        dispersion[3]=String.format("%.2f", ecartType(data,column)).replace(",", ".");
+        dispersion[4]=String.format("%.2f", ecartInterquartile(data,column)).replace(",", ".");
+        dispersion[5]=String.format("%.2f", etendu(data,column)).replace(",", ".");
+        dispersion[6]=String.format("%.2f", variance(data,column)).replace(",", ".");
+        dispersion[7]= outliers(data,column).toString();
 
         return dispersion;
     }

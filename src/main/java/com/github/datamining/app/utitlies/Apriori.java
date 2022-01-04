@@ -1,12 +1,11 @@
-package app.functions;
-
-import scala.Array;
-import scala.Int;
+package com.github.datamining.app.utitlies;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import static com.github.datamining.app.utitlies.ViewUtilities.*;
 
 public class Apriori {
 
@@ -21,9 +20,9 @@ public class Apriori {
     }
 
     public ArrayList<ArrayList<String>> preprocessData(ArrayList<Double[]> data){
-        ArrayList<ArrayList<String>> descritized_data = new ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<String>> descritized_data = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
-            descritized_data.add(MainFct.discretisationEqual(this.getColumn(data, i), 4, i+1));
+            descritized_data.add(discretisationEqual(this.getColumn(data, i), 4, i+1));
         }
         return descritized_data;
     }
@@ -42,7 +41,7 @@ public class Apriori {
 
     public ArrayList<Double> getColumn(ArrayList<Double[]> data, int column){
         ArrayList<Double> columnArray = new ArrayList<>();
-        for(int i=0 ;i<data.size();i++) {
+        for (int i=0 ;i<data.size();i++) {
             columnArray.add(data.get(i)[column]);
         }
         return  columnArray;
@@ -125,7 +124,7 @@ public class Apriori {
          * If we want to test it her's how!
          * just change the name mainTest to main and execute it.
          */
-        ArrayList<Double[]> data= MainFct.readFile("datasets/seeds_dataset.txt");
+        ArrayList<Double[]> data= readFile("datasets/seeds_dataset.txt");
         Apriori apriori = new Apriori(data, 20);
         ArrayList<String[]> items = apriori.calculateFrequentItems();
         for (String[] item :

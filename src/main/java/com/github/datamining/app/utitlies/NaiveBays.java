@@ -1,8 +1,8 @@
-package app.functions;
+package com.github.datamining.app.utitlies;
 
 import java.util.ArrayList;
 
-import static app.functions.MainFct.*;
+import static com.github.datamining.app.utitlies.ViewUtilities.*;
 
 public class NaiveBays {
 
@@ -138,7 +138,7 @@ public class NaiveBays {
          * ect
          * dont forget to change the name from mainTest to main to run it.
          */
-        ArrayList<Double[]> data= MainFct.readFile("datasets/seeds_dataset.txt");
+        ArrayList<Double[]> data= readFile("datasets/seeds_dataset.txt");
         ArrayList<Double> columnInDataset = new ArrayList();
         ArrayList<String> y = new ArrayList();
         Double[] instance = {};

@@ -1,9 +1,9 @@
-package app.controller;
+package com.github.datamining.app.controller;
 
-import app.functions.MainFct;
-import app.Field;
-import app.Instance;
-import app.Utilities;
+import static com.github.datamining.app.utitlies.ViewUtilities.*;
+import com.github.datamining.app.Field;
+import com.github.datamining.app.Instance;
+import com.github.datamining.app.utitlies.CommonUtilities;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-import static app.Utilities.acceptOnlyNumbersTextField;
+import static com.github.datamining.app.utitlies.CommonUtilities.*;
 
 
 public class MainWindowController implements Initializable {
@@ -176,7 +176,7 @@ public class MainWindowController implements Initializable {
                 this.datasetTable.getItems().clear();
                 ArrayList<Double[]> matrix;
                 try {
-                        matrix = MainFct.readFile(filePath);
+                        matrix = readFile(filePath);
                         int i = 1;
                         String className = "";
                         for (Double[] data: matrix) {
@@ -214,8 +214,8 @@ public class MainWindowController implements Initializable {
                 ArrayList<Double> column = new ArrayList<>();
                 ArrayList<String> ranges = new ArrayList<>();
                 try {
-                        matrix = MainFct.readFile(filePath);
-                        for(int i = 0; i < 8; i++) {
+                        matrix = readFile(filePath);
+                        for (int i = 0; i < 8; i++) {
                                 column.clear();
                                 for (Double[] instance: matrix) {
                                         column.add(instance[i]);
@@ -338,7 +338,7 @@ public class MainWindowController implements Initializable {
                 if (selectedInstance != null){
                         int lineNumber = selectedInstance.getId();
                         try {
-                                ArrayList<Double[]> matrix = MainFct.readFile(filePath);
+                                ArrayList<Double[]> matrix = readFile(filePath);
                                 BufferedWriter output = new BufferedWriter(new FileWriter(filePath));
                                 output.append("");
                                 matrix.remove(lineNumber-1);
@@ -425,7 +425,7 @@ public class MainWindowController implements Initializable {
                         this.errorAlert("All fields are required.");
                 }else{
                         try {
-                                ArrayList<Double[]> matrix = MainFct.readFile(filePath);
+                                ArrayList<Double[]> matrix = readFile(filePath);
                                 int lineNumber = Integer.parseInt(this.fieldId.getText());
 
                                 BufferedWriter output = new BufferedWriter(new FileWriter(filePath));
@@ -481,12 +481,12 @@ public class MainWindowController implements Initializable {
         }
 
         public void switchToDashboardWin(ActionEvent event) throws Exception {
-                Utilities u = new Utilities();
+                CommonUtilities u = new CommonUtilities();
                 u.switchWindow(event, "/resources/views/DashboardWindow.fxml", root, stage, scene);
         }
 
         private void refreshScene(ActionEvent event) throws IOException {
-                Utilities u = new Utilities();
+                CommonUtilities u = new CommonUtilities();
                 u.switchWindow(event, "/resources/views/MainWindow.fxml", root, stage, scene);
         }
 

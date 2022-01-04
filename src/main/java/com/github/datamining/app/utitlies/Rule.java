@@ -1,4 +1,4 @@
-package app.functions;
+package com.github.datamining.app.utitlies;
 
 import java.util.ArrayList;
 import java.util.Set;
